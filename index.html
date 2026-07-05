@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chrome Developers</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container"> 
+  <div class="content">
+    <h1>Developer Documentation</h1>
+    <p>Skip to main content</p>
+    <p>Chrome for Developers</p>
+    <h2>Docs</h2>
+    <h2>Blog</h2>
+    <h2>Search</h2>
+    <h2>English</h2>
+    <h2>Docs</h2>
+    <h2>Chrome Extensions</h2>
+    <h2>Reference</h2>
+    <h2>Overview</h2>
+    <h2>Get Started</h2>
+    <h2>Develop</h2>
+    <h2>How To</h2>
+    <h2>Reference</h2>
+    <h2>Samples</h2>
+    <h2>Chrome Web Store</h2>
+    <h2>Filter</h2>
+    <h2>Home</h2>
+    <h2>Docs</h2>
+    <h2>Chrome Extensions</h2>
+    <h2>Reference</h2>
+    <p>API</p>
+    <p>Was this helpful?</p>
+    <p>API reference</p>
+    <p>Most extensions need access to one or more Chrome Extensions APIs to function. This API reference describes the APIs available for use in extensions and presents example use cases.</p>
+    <p>Beginning in Chrome 148, these APIs are also available under the browser namespace as a cross-browser alternative to chrome. See The browser namespace for adoption guidance.</p>
+    <p>Common Extensions API features</p>
+    <p>An Extensions API consists of a namespace containing methods and properties for doing extensions work, and usually, but not always, manifest fields for the manifest.json file. For example, the chrome.action namespace requires an &quot;action&quot; object in the manifest. Many APIs also require permissions in the manifest.</p>
+    <p>Methods in extension APIs are asynchronous unless stated otherwise. Asynchronous methods return immediately, without waiting for the operation that calls them to finish. Use promises to get the results of these asynchronous methods.</p>
+    <p>Manifest V3 is supported generally in Chrome 88 or later. For extension features added in later Chrome versions, see the API reference documentation for support information. If your extension requires a specific API, you can specify a minimum chrome version in the manifest file.</p>
+    <p>Chrome Extension APIs</p>
+    <p>accessibilityFeatures</p>
+    <p>Use the chrome.accessibilityFeatures API to manage Chrome&#x27;s accessibility features. This API relies on the ChromeSetting prototype of the type API for getting and setting individual accessibility features. In order to get feature states the extension must request accessibilityFeatures.read permission. For modifying feature state, the extension needs accessibilityFeatures.modify permission. Note that accessibilityFeatures.modify does not imply accessibilityFeatures.read permission.</p>
+    <p>action</p>
+    <p>Chrome 88+ MV3+</p>
+    <p>Use the chrome.action API to control the extension&#x27;s icon in the Google Chrome toolbar.</p>
+    <p>alarms</p>
+    <p>Use the chrome.alarms API to schedule code to run periodically or at a specified time in the future.</p>
+    <p>audio</p>
+    <p>Chrome 59+ ChromeOS only</p>
+    <p>The chrome.audio API is provided to allow users to get information about and control the audio devices attached to the system. This API is currently only available in kiosk mode for ChromeOS.</p>
+    <p>bookmarks</p>
+    <p>Use the chrome.bookmarks API to create, organize, and otherwise manipulate bookmarks. Also see Override Pages, which you can use to create a custom Bookmark Manager page.</p>
+    <p>browsingData</p>
+    <p>Use the chrome.browsingData API to remove browsing data from a user&#x27;s local profile.</p>
+    <p>certificateProvider</p>
+    <p>Chrome 46+ ChromeOS only</p>
+    <p>Use this API to expose certificates to the platform which can use these certificates for TLS authentications.</p>
+    <p>commands</p>
+    <p>Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the browser action or send a command to the extension.</p>
+    <p>contentSettings</p>
+    <p>Use the chrome.contentSettings API to change settings that control whether websites can use features such as cookies, JavaScript, and plugins. More generally speaking, content settings allow you to customize Chrome&#x27;s behavior on a per-site basis instead of globally.</p>
+    <p>contextMenus</p>
+    <p>Use the chrome.contextMenus API to add items to Google Chrome&#x27;s context menu. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.</p>
+    <p>cookies</p>
+    <p>Use the chrome.cookies API to query and modify cookies, and to be notified when they change.</p>
+    <p>debugger</p>
+    <p>The chrome.debugger API serves as an alternate transport for Chrome&#x27;s remote debugging protocol. Use chrome.debugger to attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, and more. Use the Debuggee property tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.</p>
+    <p>declarativeContent</p>
+    <p>Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to read the page&#x27;s content.</p>
+    <p>declarativeNetRequest</p>
+    <h2>Chrome 84+</h2>
+    <p>The chrome.declarativeNetRequest API is used to block or modify network requests by specifying declarative rules. This lets extensions modify network requests without intercepting them and viewing their content, thus providing more privacy.</p>
+    <p>desktopCapture</p>
+    <p>The Desktop Capture API captures the content of the screen, individual windows, or individual tabs.</p>
+    <p>devtools.inspectedWindow</p>
+    <p>Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the inspected page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within the page.</p>
+    <p>devtools.network</p>
+    <p>Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in the Network panel.</p>
+    <p>devtools.panels</p>
+    <p>Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own panels, access existing panels, and add sidebars.</p>
+    <p>devtools.performance</p>
+    <h2>Chrome 129+</h2>
+    <p>Use the chrome.devtools.performance API to listen to recording status updates in the Performance panel in DevTools.</p>
+    <p>devtools.recorder</p>
+    <h2>Chrome 105+</h2>
+    <p>Use the chrome.devtools.recorder API to customize the Recorder panel in DevTools.</p>
+    <p>dns</p>
+    <p>Dev channel</p>
+    <p>Use the chrome.dns API for dns resolution.</p>
+    <p>documentScan</p>
+    <p>Chrome 44+ ChromeOS only</p>
+    <p>Use the chrome.documentScan API to discover and retrieve images from attached document scanners.</p>
+    <p>dom</p>
+    <h2>Chrome 88+</h2>
+    <p>Use the chrome.dom API to access special DOM APIs for Extensions</p>
+    <p>downloads</p>
+    <p>Use the chrome.downloads API to programmatically initiate, monitor, manipulate, and search for downloads.</p>
+    <p>enterprise.deviceAttributes</p>
+    <p>Chrome 46+ ChromeOS only Requires policy</p>
+    <p>Use the chrome.enterprise.deviceAttributes API to read device attributes. Note: This API is only available to extensions force-installed by enterprise policy.</p>
+    <p>enterprise.hardwarePlatform</p>
+    <p>Chrome 71+ Requires policy</p>
+    <p>Use the chrome.enterprise.hardwarePlatform API to get the manufacturer and model of the hardware platform where the browser runs. Note: This API is only available to extensions installed by enterprise policy.</p>
+    <p>enterprise.login</p>
+    <p>Chrome 139+ ChromeOS only Requires policy</p>
+    <p>Use the chrome.enterprise.login API to exit Managed Guest sessions. Note: This API is only available to extensions installed by enterprise policy in ChromeOS Managed Guest sessions.</p>
+    <p>enterprise.networkingAttributes</p>
+    <p>Chrome 85+ ChromeOS only Requires policy</p>
+    <p>Use the chrome.enterprise.networkingAttributes API to read information about your current network. Note: This API is only available to extensions force-installed by enterprise policy.</p>
+    <p>enterprise.platformKeys</p>
+    <p>ChromeOS only Requires policy</p>
+    <p>Use the chrome.enterprise.platformKeys API to generate keys and install certificates for these keys. The certificates will be managed by the platform and can be used for TLS authentication, network access or by other extension through chrome.platformKeys.</p>
+    <p>events</p>
+    <p>The chrome.events namespace contains common types used by APIs dispatching events to notify you when something interesting happens.</p>
+    <p>extension</p>
+    <p>The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages between an extension and its content scripts or between extensions, as described in detail in Message Passing.</p>
+    <p>extensionTypes</p>
+    <p>The chrome.extensionTypes API contains type declarations for Chrome extensions.</p>
+    <p>fileBrowserHandler</p>
+    <p>ChromeOS only Foreground only</p>
+    <p>Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to enable users to upload files to your website.</p>
+    <p>fileSystemProvider</p>
+    <p>ChromeOS only</p>
+    <p>Use the chrome.fileSystemProvider API to create file systems, that can be accessible from the file manager on Chrome OS.</p>
+    <p>fontSettings</p>
+    <p>Use the chrome.fontSettings API to manage Chrome&#x27;s font settings.</p>
+    <p>gcm</p>
+    <p>Use chrome.gcm to enable apps and extensions to send and receive messages through Firebase Cloud Messaging (FCM).</p>
+    <p>history</p>
+    <p>Use the chrome.history API to interact with the browser&#x27;s record of visited pages. You can add, remove, and query for URLs in the browser&#x27;s history. To override the history page with your own version, see Override Pages.</p>
+    <p>i18n</p>
+    <p>Use the chrome.i18n infrastructure to implement internationalization across your whole app or extension.</p>
+    <p>identity</p>
+    <p>Use the chrome.identity API to get OAuth2 access tokens.</p>
+    <p>idle</p>
+    <p>Use the chrome.idle API to detect when the machine&#x27;s idle state changes.</p>
+    <p>input.ime</p>
+    <p>ChromeOS only</p>
+    <p>Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set the composition, and manage the candidate window.</p>
+    <p>instanceID</p>
+    <h2>Chrome 44+</h2>
+    <p>Use chrome.instanceID to access the Instance ID service.</p>
+    <p>loginState</p>
+    <p>Chrome 78+ ChromeOS only</p>
+    <p>Use the chrome.loginState API to read and monitor the login state.</p>
+    <p>management</p>
+    <p>The chrome.management API provides ways to manage installed apps and extensions.</p>
+    <p>mimeHandler</p>
+    <h2>Pending</h2>
+    <p>Use the chrome.mimeHandler API to handle MIME type streams in third-party extensions.</p>
+    <p>notifications</p>
+    <p>Use the chrome.notifications API to create rich notifications using templates and show these notifications to users in the system tray.</p>
+    <p>offscreen</p>
+    <p>Chrome 109+ MV3+</p>
+    <p>Use the offscreen API to create and manage offscreen documents.</p>
+    <p>omnibox</p>
+    <p>The omnibox API allows you to register a keyword with Google Chrome&#x27;s address bar, which is also known as the omnibox.</p>
+    <p>pageCapture</p>
+    <p>Use the chrome.pageCapture API to save a tab as MHTML.</p>
+    <p>permissions</p>
+    <p>Use the chrome.permissions API to request declared optional permissions at run time rather than install time, so users understand why the permissions are needed and grant only those that are necessary.</p>
+    <p>platformKeys</p>
+    <p>Chrome 45+ ChromeOS only</p>
+    <p>Use the chrome.platformKeys API to access client certificates managed by the platform. If the user or policy grants the permission, an extension can use such a certficate in its custom authentication protocol. E.g. this allows usage of platform managed certificates in third party VPNs (see chrome.vpnProvider).</p>
+    <p>power</p>
+    <p>Use the chrome.power API to override the system&#x27;s power management features.</p>
+    <p>printerProvider</p>
+    <h2>Chrome 44+</h2>
+    <p>The chrome.printerProvider API exposes events used by print manager to query printers controlled by extensions, to query their capabilities and to submit print jobs to these printers.</p>
+    <p>printing</p>
+    <p>Chrome 81+ ChromeOS only</p>
+    <p>Use the chrome.printing API to send print jobs to printers installed on Chromebook.</p>
+    <p>printingMetrics</p>
+    <p>Chrome 79+ ChromeOS only Requires policy</p>
+    <p>Use the chrome.printingMetrics API to fetch data about printing usage.</p>
+    <p>privacy</p>
+    <p>Use the chrome.privacy API to control usage of the features in Chrome that can affect a user&#x27;s privacy. This API relies on the ChromeSetting prototype of the type API for getting and setting Chrome&#x27;s configuration.</p>
+    <p>processes</p>
+    <p>Dev channel</p>
+    <p>Use the chrome.processes API to interact with the browser&#x27;s processes.</p>
+    <p>proxy</p>
+    <p>Use the chrome.proxy API to manage Chrome&#x27;s proxy settings. This API relies on the ChromeSetting prototype of the type API for getting and setting the proxy configuration.</p>
+    <p>readingList</p>
+    <p>Chrome 120+ MV3+</p>
+    <p>Use the chrome.readingList API to read from and modify the items in the Reading List.</p>
+    <p>runtime</p>
+    <p>Use the chrome.runtime API to retrieve the service worker, return details about the manifest, and listen for and respond to events in the extension lifecycle. You can also use this API to convert the relative path of URLs to fully-qualified URLs.</p>
+    <p>scripting</p>
+    <p>Chrome 88+ MV3+</p>
+    <p>Use the chrome.scripting API to execute script in different contexts.</p>
+    <p>search</p>
+    <h2>Chrome 87+</h2>
+    <p>Use the chrome.search API to search via the default provider.</p>
+    <p>sessions</p>
+    <p>Use the chrome.sessions API to query and restore tabs and windows from a browsing session.</p>
+    <p>sidePanel</p>
+    <p>Chrome 114+ MV3+</p>
+    <p>Use the chrome.sidePanel API to host content in the browser&#x27;s side panel alongside the main content of a webpage.</p>
+    <p>storage</p>
+    <p>Use the chrome.storage API to store, retrieve, and track changes to user data.</p>
+    <p>system.cpu</p>
+    <p>Use the system.cpu API to query CPU metadata.</p>
+    <p>system.display</p>
+    <p>Use the system.display API to query display metadata.</p>
+    <p>system.memory</p>
+    <p>The chrome.system.memory API.</p>
+    <p>system.storage</p>
+    <p>Use the chrome.system.storage API to query storage device information and be notified when a removable storage device is attached and detached.</p>
+    <p>systemLog</p>
+    <p>Chrome 125+ ChromeOS only Requires policy</p>
+    <p>Use the chrome.systemLog API to record Chrome system logs from extensions.</p>
+    <p>tabCapture</p>
+    <p>Use the chrome.tabCapture API to interact with tab media streams.</p>
+    <p>tabGroups</p>
+    <p>Chrome 89+ MV3+</p>
+    <p>Use the chrome.tabGroups API to interact with the browser&#x27;s tab grouping system. You can use this API to modify and rearrange tab groups in the browser. To group and ungroup tabs, or to query what tabs are in groups, use the chrome.tabs API.</p>
+    <p>tabs</p>
+    <p>Use the chrome.tabs API to interact with the browser&#x27;s tab system. You can use this API to create, modify, and rearrange tabs in the browser.</p>
+    <p>topSites</p>
+    <p>Use the chrome.topSites API to access the top sites (i.e. most visited sites) that are displayed on the new tab page. These do not include shortcuts customized by the user.</p>
+    <p>tts</p>
+    <p>Use the chrome.tts API to play synthesized text-to-speech (TTS). See also the related ttsEngine API, which allows an extension to implement a speech engine.</p>
+    <p>ttsEngine</p>
+    <p>Use the chrome.ttsEngine API to implement a text-to-speech(TTS) engine using an extension. If your extension registers using this API, it will receive events containing an utterance to be spoken and other parameters when any extension or Chrome App uses the tts API to generate speech. Your extension can then use any available web technology to synthesize and output the speech, and send events back to the calling function to report the status.</p>
+    <p>types</p>
+    <p>The chrome.types API contains type declarations for Chrome.</p>
+    <p>userScripts</p>
+    <p>Chrome 120+ MV3+</p>
+    <p>Use the userScripts API to execute user scripts in the User Scripts context.</p>
+    <p>vpnProvider</p>
+    <p>Chrome 43+ ChromeOS only</p>
+    <p>Use the chrome.vpnProvider API to implement a VPN client.</p>
+    <p>wallpaper</p>
+    <p>Chrome 43+ ChromeOS only</p>
+    <p>Use the chrome.wallpaper API to change the ChromeOS wallpaper.</p>
+    <p>webAuthenticationProxy</p>
+    <p>Chrome 115+ MV3+</p>
+    <p>The chrome.webAuthenticationProxy API lets remote desktop software running on a remote host intercept Web Authentication API (WebAuthn) requests in order to handle them on a local client.</p>
+    <p>webNavigation</p>
+    <p>Use the chrome.webNavigation API to receive notifications about the status of navigation requests in-flight.</p>
+    <p>webRequest</p>
+    <p>Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.</p>
+    <p>windows</p>
+    <p>Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows in the browser.</p>
+    <p>Was this helpful?</p>
+    <p>Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License. For details, see the Google Developers Site Policies. Java is a registered trademark of Oracle and/or its affiliates.</p>
+    <p>Last updated 2026-07-01 UTC.</p>
+    <h2>Contribute</h2>
+    <p>File a bug</p>
+    <p>See open issues</p>
+    <p>Related content</p>
+    <p>Chromium updates</p>
+    <p>Case studies</p>
+    <h2>Archive</h2>
+    <p>Podcasts &amp; shows</p>
+    <h2>Follow</h2>
+    <p>@ChromiumDev on X</p>
+    <p>YouTube</p>
+    <p>Chrome for Developers on LinkedIn</p>
+    <p>RSS</p>
+    <h2>Terms</h2>
+    <h2>Privacy</h2>
+    <h2>English</h2>
+    <p>The new page has loaded..</p>
+  </div>
+
+
+  <div class="player">
+    
+    <div class="console-tag">&gt; audio.queue[current]</div>
+    <div class="disc"></div>
+    <p id="track-title">Loading&hellip;</p>
+    <p id="track-meta">&mdash;</p>
+
+    <div class="controls">
+      <button class="btn" id="btn-prev" title="Previous" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM20 6L9 12l11 6z"/></svg>
+      </button>
+      <button class="btn" id="btn-play" title="Play" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <button class="btn" id="btn-pause" title="Pause" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <button class="btn stop" id="btn-stop" title="Stop" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg>
+      </button>
+      <button class="btn primary" id="btn-next" title="Next" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l11 6-11 6z"/></svg>
+      </button>
+    </div>
+  </div>
+</div> 
+
+<audio id="audio" preload="none"></audio>
+
+<script>
+/* =========================================================
+   CONFIGURE THESE TWO VALUES BEFORE PUBLISHING
+========================================================= */
+const CONFIG = {
+  DRIVE_API_KEY: "AIzaSyBNtt2vKaW39z5Jy568wQBaoiH19WF5pFE",
+  DRIVE_FOLDER_ID: "1OuKBhqttzMoaBM5MMm4u9-6_GezgZD8Z"
+};
+/* ========================================================= */
+
+const audio = document.getElementById('audio');
+const els = {
+  title: document.getElementById('track-title'),
+  meta: document.getElementById('track-meta'),
+  prev: document.getElementById('btn-prev'),
+  play: document.getElementById('btn-play'),
+  pause: document.getElementById('btn-pause'),
+  stop: document.getElementById('btn-stop'),
+  next: document.getElementById('btn-next'),
+};
+
+let queue = [];
+let current = -1;
+
+function setButtonsEnabled(enabled){
+  [els.prev, els.play, els.pause, els.stop, els.next].forEach(b => b.disabled = !enabled);
+}
+
+function fileStreamUrl(fileId){
+  return `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${CONFIG.DRIVE_API_KEY}`;
+}
+
+function loadTrack(index, autoplay){
+  if(queue.length === 0) return;
+  current = ((index % queue.length) + queue.length) % queue.length;
+  const track = queue[current];
+  audio.src = fileStreamUrl(track.id);
+  els.title.textContent = track.name.replace(/\.[^/.]+$/, "");
+  els.meta.textContent = `track ${current + 1} of ${queue.length}`;
+  if(autoplay){
+    audio.play().catch(() => {});
+  }
+}
+
+els.play.addEventListener('click', () => {
+  if(current === -1) loadTrack(0, true);
+  else audio.play().catch(() => {});
+});
+els.pause.addEventListener('click', () => audio.pause());
+els.stop.addEventListener('click', () => {
+  audio.pause();
+  audio.currentTime = 0;
+});
+els.next.addEventListener('click', () => loadTrack(current + 1, true));
+els.prev.addEventListener('click', () => loadTrack(current - 1, true));
+audio.addEventListener('ended', () => loadTrack(current + 1, true));
+
+async function loadLibrary(){
+  if(CONFIG.DRIVE_API_KEY.startsWith("YOUR_") || CONFIG.DRIVE_FOLDER_ID.startsWith("YOUR_")){
+    els.title.textContent = "Not configured";
+    els.meta.textContent = "add API key + folder id";
+    return;
+  }
+  try{
+    const q = encodeURIComponent(`'${CONFIG.DRIVE_FOLDER_ID}' in parents and mimeType contains 'audio/' and trashed = false`);
+    const url = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name,createdTime)&orderBy=createdTime&supportsAllDrives=true&includeItemsFromAllDrives=true&key=${CONFIG.DRIVE_API_KEY}`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error(`Drive API error ${res.status}`);
+    const data = await res.json();
+    queue = data.files || [];
+
+    if(queue.length === 0){
+      els.title.textContent = "Folder is empty";
+      els.meta.textContent = "upload a song to Drive";
+      return;
+    }
+
+    setButtonsEnabled(true);
+    loadTrack(0, false);
+  }catch(err){
+    els.title.textContent = "Couldn't reach Drive";
+    els.meta.textContent = err.message;
+  }
+}
+
+loadLibrary();
+
+</script>
+
+</body>
+</html>
