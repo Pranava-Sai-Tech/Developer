@@ -358,34 +358,71 @@ els.next.addEventListener('click', () => loadTrack(current + 1, true));
 els.prev.addEventListener('click', () => loadTrack(current - 1, true));
 audio.addEventListener('ended', () => loadTrack(current + 1, true));
 
-async function loadLibrary(){
-  if(CONFIG.DRIVE_API_KEY.startsWith("YOUR_") || CONFIG.DRIVE_FOLDER_ID.startsWith("YOUR_")){
+async function loadLibrary() {
+  if (
+    CONFIG.DRIVE_API_KEY.startsWith("YOUR_") ||
+    CONFIG.DRIVE_FOLDER_ID.startsWith("YOUR_")
+  ) {
     els.title.textContent = "Not configured";
-    els.meta.textContent = "add API key + folder id";
+    els.meta.textContent = "Add API key + Folder ID";
     return;
   }
-  try{
-    const q = encodeURIComponent(`'${CONFIG.DRIVE_FOLDER_ID}' in parents and mimeType contains 'audio/' and trashed = false`);
-    const url = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name,createdTime)&orderBy=createdTime&supportsAllDrives=true&includeItemsFromAllDrives=true&key=${CONFIG.DRIVE_API_KEY}`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error(`Drive API error ${res.status}`);
-    const data = await res.json();
-    queue = data.files || [];
 
-    if(queue.length === 0){
+  try {
+    queue = [];
+    let pageToken = "";
+
+    const q = encodeURIComponent(
+      `'${CONFIG.DRIVE_FOLDER_ID}' in parents and mimeType contains 'audio/' and trashed = false`
+    );
+
+    do {
+      let url =
+        `https://www.googleapis.com/drive/v3/files?q=${q}` +
+        `&fields=nextPageToken,files(id,name,createdTime)` +
+        `&pageSize=1000` +
+        `&orderBy=createdTime` +
+        `&supportsAllDrives=true` +
+        `&includeItemsFromAllDrives=true` +
+        `&key=${CONFIG.DRIVE_API_KEY}`;
+
+      if (pageToken) {
+        url += `&pageToken=${pageToken}`;
+      }
+
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error(`Drive API Error ${res.status}`);
+      }
+
+      const data = await res.json();
+
+      if (data.files && data.files.length) {
+        queue.push(...data.files);
+      }
+
+      pageToken = data.nextPageToken || "";
+
+    } while (pageToken);
+
+    console.log("Loaded songs:", queue.length);
+
+    if (queue.length === 0) {
       els.title.textContent = "Folder is empty";
-      els.meta.textContent = "upload a song to Drive";
+      els.meta.textContent = "Upload songs to Google Drive";
       return;
     }
 
     setButtonsEnabled(true);
     loadTrack(0, false);
-  }catch(err){
+
+  } catch (err) {
+    console.error(err);
     els.title.textContent = "Couldn't reach Drive";
     els.meta.textContent = err.message;
   }
 }
-
 loadLibrary();
 
 </script>
